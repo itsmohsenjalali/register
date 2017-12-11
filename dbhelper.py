@@ -23,14 +23,14 @@ class DBhelper:
         self.conn.commit()
     def add_item(self,item_list):
         cur = self.conn.cursor()
-        cur.execute("INSERT INTO register (ID,NAME,SID)
-        VALUES ({},{},{})".format(item_list[0],item_list[1],item_list[2]))
+        cur.execute("""INSERT INTO register (ID,NAME,SID)
+        VALUES ({},{},{})""".format(item_list[0],item_list[1],item_list[2]))
         self.conn.commit()
     def delete_item(self,ID):
         cur = self.conn.cursor()
-        cur.execute("DELETE from register where ID={};".format(ID))
+        cur.execute("""DELETE from register where ID={};""".format(ID))
         self.conn.commit()
     def get_item(self):
         cur = self.conn.cursor()
-        cur.execute("SELECT NAME,SID from register")
+        cur.execute("""SELECT NAME,SID from register""")
         return(cur.fetchall())

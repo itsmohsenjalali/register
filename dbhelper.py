@@ -23,7 +23,7 @@ class DBhelper:
         self.conn.commit()
     def add_item(self,item_list):
         cur = self.conn.cursor()
-        cur.execute("INSERT INTO register (ID,NAME,SID) \
+        cur.execute("INSERT INTO register (ID,NAME,SID)
         VALUES ({},{},{})".format(item_list[0],item_list[1],item_list[2]))
         self.conn.commit()
     def delete_item(self,ID):

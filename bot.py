@@ -80,3 +80,5 @@ def main():
             else:
                 send_message("پیام شما قابل مفهوم نیست",chat_id)
         time.sleep(0.5)
+if __name__ == '__main__':
+    main()

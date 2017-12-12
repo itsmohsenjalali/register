@@ -58,6 +58,7 @@ def register(updates,chat_id):
             if update["message"]["chat"]["id"]==chat_id :
                 updates = get_updates(last_update_id)
                 Name = update["message"]["text"]
+                send_message(str(Name),chat_id)
     else:
         return False
     send_message(" شماره دانشجویی خود را وارد کنید",chat_id)
@@ -66,12 +67,13 @@ def register(updates,chat_id):
             if update["message"]["chat"]["id"]==chat_id :
                 updates = get_updates(last_update_id)
                 ID = update["message"]["text"]
+                send_message(str(ID),chat_id)
     else:
         return False
     register_db(chat_id,Name,ID)
     return True
 def get_report(chat_id):
-    item = [db.get_item()]
+    item = db.get_item()
     for i in item :
         send_message(str(i),chat_id)
 def main():

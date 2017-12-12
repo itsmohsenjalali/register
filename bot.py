@@ -56,7 +56,7 @@ def register(updates,chat_id):
     if isUpdate(updates) :
         for update in updates["result"]:
             if update["message"]["chat"]["id"]==chat_id :
-                updates = get_updates(last_update_id)
+                updates = get_updates(last_update_id + 1)
                 Name = update["message"]["text"]
                 send_message(str(Name),chat_id)
     else:
@@ -65,7 +65,7 @@ def register(updates,chat_id):
     if isUpdate(updates) :
         for update in updates["result"]:
             if update["message"]["chat"]["id"]==chat_id :
-                updates = get_updates(last_update_id)
+                updates = get_updates(last_update_id + 1)
                 ID = update["message"]["text"]
                 send_message(str(ID),chat_id)
     else:

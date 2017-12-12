@@ -7,7 +7,7 @@ from dbhelper import DBhelper
 
 db = DBhelper()
 token = os.environ['TELEGRAM_TOKEN']
-global last_update_id = None
+last_update_id = None
 url = "https://api.telegram.org/bot{}/".format(token)
 
 def get_url(URL):
@@ -43,7 +43,7 @@ def isUpdate(updates):
     while counter <= 60 :
         refresh = get_updates(last)
         if len(refresh["result"]) > 0:
-            last_update_id = last
+            global last_update_id = last
             return True
         counter += 1
         time.sleep(1)
@@ -72,7 +72,7 @@ def register(updates,chat_id):
     return True
 def main():
     db.setup()
-    '''last_update_id = None'''
+    global last_update_id
     while True:
         updates = get_updates(last_update_id)
         if len(updates["result"]) > 0:

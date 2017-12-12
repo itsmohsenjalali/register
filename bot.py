@@ -71,7 +71,7 @@ def register(updates,chat_id):
     return True
 def main():
     db.setup()
-    #last_update_id = None
+    last_update_id = None
     while True:
         updates = get_updates(last_update_id)
         if len(updates["result"]) > 0:

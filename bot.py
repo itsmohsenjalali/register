@@ -69,8 +69,11 @@ def register(updates,chat_id):
     else:
         return False
     register_db(chat_id,Name,ID)
-    send_message(str(last_update_id),chat_id)
     return True
+def get_report(chat_id):
+    item = [db.get_item()]
+    for i in item :
+        send_message(i,chat_id)
 def main():
     db.setup()
     global last_update_id
@@ -86,7 +89,8 @@ def main():
                 elif text == "/reg":
                     if register(updates,chat_id) :
                         send_message("😉ثبت نام شما انجام شد",chat_id)
-                        send_message(str(last_update_id),chat_id)
+                elif text == "/get":
+                    get_report(chat_id)
                 else:
                     send_message("پیام شما قابل مفهوم نیست",chat_id)
         time.sleep(0.5)

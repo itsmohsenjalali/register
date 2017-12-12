@@ -42,7 +42,7 @@ def isUpdate(updates):
     counter = 0
     while counter <= 60 :
         refresh = get_updates(last)
-        if last != get_last_update_id(refresh):
+        if len(refresh["result"]) > 0:
             return True
         counter += 1
         time.sleep(1)

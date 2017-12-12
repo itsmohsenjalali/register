@@ -24,7 +24,7 @@ class DBhelper:
     def add_item(self,item_list):
         cur = self.conn.cursor()
         cur.execute("""INSERT INTO register1 (ID,NAME,SID)
-        VALUES (%d,%s,%s)""",(item_list[0],item_list[1],item_list[2]))
+        VALUES (%s,%s,%s)""",(item_list[0],item_list[1],item_list[2]))
         self.conn.commit()
     def delete_item(self,ID):
         cur = self.conn.cursor()

@@ -70,15 +70,16 @@ def main():
         updates = get_updates(last_update_id)
         if len(updates["result"]) > 0:
             last_update_id = get_last_update_id(updates) + 1
-            text = updates["result"]["message"]["text"]
-            chat_id = updates["result"]["message"]["chat"]["id"]
-            if text == "/start":
-                send_message("به ربات ثبت نام خوش امدین",chat_id)
-            elif text == "/reg":
-                if register(updates) :
-                    send_message("😉ثبت نام شما انجام شد",chat_id)
-            else:
-                send_message("پیام شما قابل مفهوم نیست",chat_id)
+            for update in updates["result"]:
+                text = update["message"]["text"]
+                chat_id = update["message"]["chat"]["id"]
+                if text == "/start":
+                    send_message("به ربات ثبت نام خوش امدین",chat_id)
+                elif text == "/reg":
+                    if register(updates) :
+                        send_message("😉ثبت نام شما انجام شد",chat_id)
+                else:
+                    send_message("پیام شما قابل مفهوم نیست",chat_id)
         time.sleep(0.5)
 if __name__ == '__main__':
     main()

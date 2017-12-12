@@ -44,7 +44,7 @@ def isUpdate(updates):
     while counter <= 60 :
         refresh = get_updates(last)
         if len(refresh["result"]) > 0:
-            last_update_id = last
+            last_update_id = last + 1
             return True
         counter += 1
         time.sleep(1)

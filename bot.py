@@ -51,14 +51,14 @@ def register(updates,chat_id):
     Name = ""
     ID = ""
     send_message("نام و نام خانوادگی خود را وارد کنید",chat_id)
-    if isUpdate :
+    if isUpdate(updates) :
         for update in updates["result"]:
             if update["message"]["chat"]["id"]==chat_id :
                 Name = update["message"]["text"]
     else:
         return False
     send_message(" شماره دانشجویی خود را وارد کنید",chat_id)
-    if isUpdate :
+    if isUpdate(updates) :
         for update in updates["result"]:
             if update["message"]["chat"]["id"]==chat_id :
                 ID = update["message"]["text"]

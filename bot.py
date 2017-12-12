@@ -73,7 +73,7 @@ def register(updates,chat_id):
 def get_report(chat_id):
     item = [db.get_item()]
     for i in item :
-        send_message(i,chat_id)
+        send_message(str(i),chat_id)
 def main():
     db.setup()
     global last_update_id

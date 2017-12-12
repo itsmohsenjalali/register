@@ -17,7 +17,7 @@ class DBhelper:
     def setup(self):
         cur = self.conn.cursor()
         cur.execute('''CREATE TABLE register1
-        (ID INT PRIMARY KEY NOT NULL,
+        (ID INT NOT NULL,
         NAME TEXT NOT NULL,
         SID TEXT NOT NULL);''')
         self.conn.commit()

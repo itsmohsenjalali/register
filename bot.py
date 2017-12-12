@@ -47,18 +47,21 @@ def isUpdate(updates):
         counter += 1
         time.sleep(1)
     return False
-def register(updates):
-    chat_id = updates["result"]["message"]["chat"]["id"]
+def register(updates,chat_id):
     Name = ""
     ID = ""
     send_message("نام و نام خانوادگی خود را وارد کنید",chat_id)
     if isUpdate :
-        Name = updates["result"]["message"]["text"]
+        for update in updates["result"]:
+            if update["message"]["chat"]["id"]==chat_id :
+                Name = update["message"]["text"]
     else:
         return False
     send_message(" شماره دانشجویی خود را وارد کنید",chat_id)
     if isUpdate :
-        ID = updates["result"]["message"]["text"]
+        for update in updates["result"]:
+            if update["message"]["chat"]["id"]==chat_id :
+                ID = update["message"]["text"]
     else:
         return False
     register_db(chat_id,Name,ID)
@@ -76,7 +79,7 @@ def main():
                 if text == "/start":
                     send_message("به ربات ثبت نام خوش امدین",chat_id)
                 elif text == "/reg":
-                    if register(updates) :
+                    if register(updates,chat_id) :
                         send_message("😉ثبت نام شما انجام شد",chat_id)
                 else:
                     send_message("پیام شما قابل مفهوم نیست",chat_id)

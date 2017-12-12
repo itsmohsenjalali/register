@@ -38,12 +38,13 @@ def register_db(chat_id,Name,Id):
     db.add_item([chat_id,Name,Id])
     return
 def isUpdate(updates):
+    global last_update_id
     last = get_last_update_id(updates)+1
     counter = 0
     while counter <= 60 :
         refresh = get_updates(last)
         if len(refresh["result"]) > 0:
-            global last_update_id = last
+            last_update_id = last
             return True
         counter += 1
         time.sleep(1)

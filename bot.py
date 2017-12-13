@@ -39,10 +39,10 @@ def register_db(chat_id,Name,Id):
     return
 def isUpdate(updates):
     global last_update_id
-    '''last = get_last_update_id(updates)'''
+    last = get_last_update_id(updates)
     counter = 0
     while counter <= 60 :
-        refresh = get_updates(last_update_id)
+        refresh = get_updates(last)
         if len(refresh["result"]) > 0:
             last_update_id += 1
             return True

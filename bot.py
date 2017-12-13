@@ -90,6 +90,7 @@ def main():
                 elif text == "/reg":
                     if register(updates,chat_id) :
                         send_message("😉ثبت نام شما انجام شد",chat_id)
+                        last_update_id += 1
                 elif text == "/get":
                     get_report(chat_id)
                 else:

@@ -84,7 +84,7 @@ def main():
             for update in updates["result"]:
                 text = update["message"]["text"]
                 chat_id = update["message"]["chat"]["id"]
-                send_message(str(len(updates["result"])),chat_id)
+                send_message(str(text),chat_id)
                 if text == "/start":
                     send_message("به ربات ثبت نام خوش امدین",chat_id)
                 elif text == "/reg":

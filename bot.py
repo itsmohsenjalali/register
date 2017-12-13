@@ -58,7 +58,6 @@ def register(updates,chat_id):
         for update in updates["result"]:
             if update["message"]["chat"]["id"]==chat_id :
                 Name = update["message"]["text"]
-                send_message(str(Name),chat_id)
     else:
         return False
     send_message(" شماره دانشجویی خود را وارد کنید",chat_id)
@@ -67,7 +66,6 @@ def register(updates,chat_id):
         for update in updates["result"]:
             if update["message"]["chat"]["id"]==chat_id :
                 ID = update["message"]["text"]
-                send_message(str(ID),chat_id)
     else:
         return False
     register_db(chat_id,Name,ID)
@@ -86,6 +84,7 @@ def main():
             for update in updates["result"]:
                 text = update["message"]["text"]
                 chat_id = update["message"]["chat"]["id"]
+                send_message(str(len(updates["result"])),chat_id)
                 if text == "/start":
                     send_message("به ربات ثبت نام خوش امدین",chat_id)
                 elif text == "/reg":
